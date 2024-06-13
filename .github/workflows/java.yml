@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
+
       - run: |
           javac hello.java
           java hello
@@ -16,3 +17,8 @@ jobs:
       - run: |
           docker build . -t pair:latest
           docker run pair:latest
+
+      - name: Scan image
+        uses: anchore/scan-action@v3
+        with:
+          image: "pair:latest"
