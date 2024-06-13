@@ -1,0 +1,14 @@
+name: first-workflow
+
+on:
+  push
+
+jobs:
+  run:
+    name: initial
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          javac hello.java
+          java hello
